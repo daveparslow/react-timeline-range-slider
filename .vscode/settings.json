@@ -1,0 +1,59 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "search.exclude": {
+      "dist": true,
+      "node_modules": true
+    },
+
+    // Remove the "disable rule" code action to discourage rule bypassing
+    "eslint.codeAction.disableRuleComment": {
+      "enable": false
+    },
+
+    // Automatically fix ESLint issues on save
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+
+    // Resolve plugins from studio-build
+    "typescript.preferences.quoteStyle": "single",
+    "[typescript]": {
+      "editor.detectIndentation": false,
+      "editor.insertSpaces": true,
+      "editor.formatOnSave": true,
+      "editor.rulers": [120]
+      // Disabling this while this GitHub issue is open
+      // https://github.com/Microsoft/TypeScript/issues/22991
+      // "editor.codeActionsOnSave": {
+      //     "source.organizeImports": true
+      // }
+    },
+    "[typescriptreact]": {
+      "editor.detectIndentation": false,
+      "editor.insertSpaces": true,
+      "editor.formatOnSave": true,
+      "editor.rulers": [120]
+      // Disabling this while this GitHub issue is open
+      // https://github.com/Microsoft/TypeScript/issues/22991
+      // "editor.codeActionsOnSave": {
+      //     "source.organizeImports": true
+      // }
+    },
+    "editor.tabSize": 2,
+    "json.schemas": [],
+    "files.associations": {
+    },
+    "cSpell.ignorePaths": [
+      "**/package-lock.json",
+      "**/node_modules/**",
+      "**/vscode-extension/**",
+      "**/.git/objects/**",
+      ".vscode",
+      ".vscode-insiders",
+      "**/*.css",
+      ".eslintrc.base.js"
+    ],
+    "cSpell.words": [
+      "tabindex"
+    ]
+  }
