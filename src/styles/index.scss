@@ -1,6 +1,6 @@
 $react-time-range--gray: #C8CACC;
 $react-time-range--highlight-tap: #000000;
-$react-time-range--rail-bg: #F5F7FA;
+$react-time-range--rail-bg: #e5e5e5;
 $react-time-range--handle-bg: #FFFFFF;
 $react-time-range--handle-bg--disabled: #666;
 $react-time-range--track--valid: rgb(98, 203, 102);
@@ -9,9 +9,8 @@ $react-time-range--tick-label: #77828C;
 $react-time-range--track--disabled: repeating-linear-gradient( -45deg, transparent, transparent 3px, #D0D3D7 4px, #D0D3D7 2px);
 
 .react_time_range__time_range_container {
-  padding: 30px 10% 0;
+  padding: 30px 20px 0;
   height: 70px;
-  width: 90%;
   box-sizing: border-box;
 }
 

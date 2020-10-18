@@ -72,8 +72,8 @@ function TimeRange(props: TimeRangeProps) {
     return getNowConfig(props.timelineInterval);
   };
 
-  const onChange = newTime => {
-    const formattedNewTime = newTime.map(t => new Date(t));
+  const onChange = (newTime: ReadonlyArray<number>) => {
+    const formattedNewTime: [Date, Date] = [new Date(newTime[0]), new Date(newTime[1])];
     props.onChangeCallback(formattedNewTime);
   };
 
@@ -212,12 +212,12 @@ function TimeRange(props: TimeRangeProps) {
 }
 
 export interface TimeRangeProps {
-  onChangeCallback: (formattedNewTime: Date) => void;
+  onChangeCallback: (range: [Date, Date]) => void;
   onUpdateCallback: ({ error: boolean }) => void;
   ticksNumber?: number;
-  selectedInterval?: Date[];
+  selectedInterval?: [Date, Date];
   timelineInterval: [Date, Date];
-  disabledIntervals?: Date[];
+  disabledIntervals?: [Date, Date];
   containerClassName?: string;
   sliderRailClassName?: string;
   step: number;
