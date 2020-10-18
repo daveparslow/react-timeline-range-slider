@@ -15,6 +15,7 @@
       "source.fixAll.eslint": true
     },
 
+    "tslint.enable": false,
     // Resolve plugins from studio-build
     "typescript.preferences.quoteStyle": "single",
     "[typescript]": {
