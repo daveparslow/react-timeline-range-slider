@@ -63,7 +63,41 @@ const getNowConfig = ([startTime, endTime]) => {
   return { id: 'now-track', source, target };
 };
 
-function TimeRange(props: TimeRangeProps) {
+const emptyCallback = () => undefined;
+
+export const timeRangeDefaults: TimeRangeProps = {
+  onChangeCallback: emptyCallback,
+  onUpdateCallback: emptyCallback,
+  selectedInterval: [
+    set(new Date(), { minutes: 0, seconds: 0, milliseconds: 0 }),
+    set(addHours(new Date(), 1), { minutes: 0, seconds: 0, milliseconds: 0 })
+  ],
+  timelineInterval: [startOfToday(), endOfToday()],
+  formatTick: ms => format(new Date(ms), 'HH:mm'),
+  step: 1000 * 60 * 30,
+  ticksNumber: 48,
+  error: false,
+  mode: 3
+};
+
+export function TimeRange(newProps: Partial<TimeRangeProps>) {
+  const props: TimeRangeProps = {
+    ...timeRangeDefaults,
+    ...newProps
+  };
+
+  const {
+    sliderRailClassName,
+    timelineInterval,
+    selectedInterval,
+    containerClassName,
+    error,
+    step,
+    showNow,
+    formatTick,
+    mode
+  } = props;
+
   const getDisabledIntervals = () => {
     return getFormattedBlockedIntervals(props.disabledIntervals, props.timelineInterval);
   };
@@ -113,23 +147,11 @@ function TimeRange(props: TimeRangeProps) {
     const { timelineInterval, ticksNumber } = props;
     return scaleTime()
       .domain(timelineInterval)
-      .ticks(ticksNumber)
+      .ticks(ticksNumber!)
       .map(t => +t);
   };
 
-  const {
-    sliderRailClassName,
-    timelineInterval,
-    selectedInterval,
-    containerClassName,
-    error,
-    step,
-    showNow,
-    formatTick,
-    mode
-  } = props;
-
-  const domain = timelineInterval.map(t => Number(t));
+  const domain = timelineInterval?.map(t => Number(t)) || [];
 
   return (
     <div className={containerClassName || 'react_time_range__time_range_container'}>
@@ -226,19 +248,5 @@ export interface TimeRangeProps {
   showNow?: boolean;
   mode?: number | SliderModeFunction;
 }
-
-TimeRange.defaultProps = {
-  selectedInterval: [
-    set(new Date(), { minutes: 0, seconds: 0, milliseconds: 0 }),
-    set(addHours(new Date(), 1), { minutes: 0, seconds: 0, milliseconds: 0 })
-  ],
-  timelineInterval: [startOfToday(), endOfToday()],
-  formatTick: ms => format(new Date(ms), 'HH:mm'),
-  disabledIntervals: [],
-  step: 1000 * 60 * 30,
-  ticksNumber: 48,
-  error: false,
-  mode: 3
-};
 
 export default TimeRange;

@@ -28,7 +28,9 @@
     "start": "webpack --watch",
     "build": "tsc && ncp src/styles dist/styles",
     "watch": "tsc -w",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,6 +48,7 @@
     ]
   },
   "dependencies": {
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "d3-scale": "^3.2.1",
     "date-fns": "^2.14.0",
     "node-sass": "^4.14.1",
@@ -53,12 +56,21 @@
     "react-compound-slider": "^2.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@storybook/addon-actions": "^6.0.27",
+    "@storybook/addon-essentials": "^6.0.27",
+    "@storybook/addon-links": "^6.0.27",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.0.27",
     "@types/d3-scale": "^3.2.0",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.0",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
     "@typescript-eslint/parser": "^3.9.0",
     "acorn": "^8.0.4",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "css-loader": "^5.0.0",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -68,6 +80,9 @@
     "prettier": "^2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-is": "^17.0.1",
+    "sass-loader": "^10.0.4",
+    "style-loader": "^2.0.0",
     "typescript": "^4.0.2"
   }
 }
